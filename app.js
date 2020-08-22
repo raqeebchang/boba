@@ -82,15 +82,6 @@ function drawBoba(c, middle, height){
 
     }
     animate();
-    // let k = height-25;
-    // for(let i=middle-width+15; i<=middle+width-15; i+=30){
-    //     c.beginPath();
-    //     c.arc(i, k,15,0,Math.PI*2, false);
-    //     c.stroke();
-    //     c.fillStyle="black";
-    //     c.fill();
-    // }
-
 }
 
 //For width <= 600
