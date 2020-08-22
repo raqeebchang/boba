@@ -1,0 +1,47 @@
+body{
+    background-color: #E0F7FA;
+    text-align: center;
+    margin: 0;
+}
+
+#sizes{
+    display: flex;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px){
+    #welcome{
+        font-family: 'Chilanka', cursive;
+        margin-top: 30px;
+        font-size: 24px;
+    }
+    #pick{
+        font-family: 'Chilanka', cursive;
+        margin-bottom: 0px;
+        margin-top: -10px;
+    }
+    #sizes{
+        font-family: 'Chilanka', cursive;
+        width: 200px;
+        flex-direction: column;
+        margin-top: -10px;
+    }
+    canvas{
+        border: 1px solid black;
+        margin: auto;
+        padding: 0;
+    }
+    #small{
+        border: none;
+        margin-top: -15px;
+    }
+    #medium{
+        border: none;
+        margin-top: -15px;
+    }
+    #large{
+        border: none;
+        margin-top: -15px;
+    }
+
+}
