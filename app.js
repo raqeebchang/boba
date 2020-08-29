@@ -36,48 +36,56 @@ function drawBoba(c, middle, height){
     c.lineWidth=1;
     let width=middle*.75;
     let fullWidth = (middle-width)+(middle+width);
-    // console.log(height); 
 
-    var x = middle-width+15;
+    function Bubble (x,y,dx,dy, radius){
+        this.x = x;
+        this.y = y;
+        this.dy = dy;
+        this.dx = dx;
+        this.radius = radius;
+
+        this.draw = function(){
+            c.beginPath();
+                c.arc(this.x, this.y, this.radius,0,Math.PI*2, false);
+                c.stroke();
+                c.fillStyle="black";
+                c.fill();
+        };
+
+        this.update = function(){
+            if(this.x>=middle+width-this.radius||this.x<middle-width+this.radius){
+                    this.dx= -this.dx;
+            }
+            this.x+=this.dx;
+            if(this.y+this.radius >= height-10 || this.y-this.radius < height-(height/5)){
+                this.dy = -this.dy;
+            }
+            this.y+=this.dy;
+            this.draw();
+        };
+    }
+    let x = middle-width+15;
     var y = height-30;
-    var y2 = height-45; 
-    var dx = 1;
-    var dy = 1;
-    var dy2 = 1;
     var radius = 15;
-    var radius2 = 10;
+    var bubble = new Bubble(x,y, 3, 3, 15);
+    var bubbleArr = [];
 
+    for(var i = 1; i<=3; i++){
+        for(var j = 1; j<=10; j++){
+            var a = middle;
+            var b = height-30;
+            var v1 = (Math.random()-0.5)*5;
+            var v2 = (Math.random()-0.5)*5;
+            var r = 15;
+            bubbleArr.push(new Bubble(a,b,v1,v2,radius));
+        } 
+    }
+
+    //console.log(bubbleArr);
     function animate(){
         requestAnimationFrame(animate);
-        // c.beginPath();
-        // c.arc(x, y, radius, 0, Math.PI*2, false);
-        // c.strokeStyle="black";
-        // c.stroke();
-        // if(x>=middle+width-radius||x<middle-width+radius){
-        //     dx= -dx;
-        // }
-        // x+=dx;
-        for(let i=middle-width+radius; i<=middle+width-radius; i+=2*radius){
-            c.beginPath();
-            c.arc(i, y,radius,0,Math.PI*2, false);
-            c.stroke();
-            c.fillStyle="black";
-            c.fill();
-        }
-        y+=dy;
-        if(y+radius >= height-10 || y-radius < height-60){
-            dy = -dy;
-        }
-        for(let i=middle-width+2*radius2; i<=middle+width-radius2; i+=3*radius2){
-            c.beginPath();
-            c.arc(i, y2,radius2,0,Math.PI*2, false);
-            c.stroke();
-            c.fillStyle="black";
-            c.fill();
-        }
-        y2-=dy;
-        if(y2+radius >= height-10 || y2-radius < height-60){
-            dy2 = -dy2;
+        for(var i = 0; i<bubbleArr.length; i++){
+            bubbleArr[i].update();
         }
 
     }
