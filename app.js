@@ -65,8 +65,9 @@ function drawBoba(c, middle, height){
         };
     }
     let x = middle-width+15;
-    var y = height-30;
-    var radius = 15;
+    
+    var radius = middle/15;
+    var y = height-radius*2;
     var bubble = new Bubble(x,y, 3, 3, 15);
     var bubbleArr = [];
 
@@ -75,7 +76,7 @@ function drawBoba(c, middle, height){
             var a = middle;
             var b = height-30;
             var v1 = (Math.random()-0.5)*2;
-            var v2 = (Math.random()-0.5)*3;
+            var v2 = (Math.random()-0.5)*2;
             var r = 15;
             bubbleArr.push(new Bubble(a,b,v1,v2,radius));
         } 
