@@ -74,8 +74,8 @@ function drawBoba(c, middle, height){
         for(var j = 1; j<=10; j++){
             var a = middle;
             var b = height-30;
-            var v1 = (Math.random()-0.5)*5;
-            var v2 = (Math.random()-0.5)*5;
+            var v1 = (Math.random()-0.5)*2;
+            var v2 = (Math.random()-0.5)*3;
             var r = 15;
             bubbleArr.push(new Bubble(a,b,v1,v2,radius));
         } 
