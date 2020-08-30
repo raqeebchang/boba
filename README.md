@@ -1,2 +1,3 @@
 # boba
-Currently a home page is only up and running for mobile <600px.
+Currently only a home page is active.
+https://raqeebchang.github.io/boba/
