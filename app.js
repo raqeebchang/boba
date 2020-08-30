@@ -94,8 +94,8 @@ function drawBoba(c, middle, height){
 }
 
 //For width <= 600
-function phoneSize(x){
-    if(x.matches){
+//function phoneSize(x){
+//    if(x.matches){
         //Setting the dpi stuff up 
         //----------
         var scale = window.devicePixelRatio;
@@ -209,17 +209,17 @@ function phoneSize(x){
         drawBoba(d,med.width/2, med.height);
         drawBoba(e, lrg.width/2, lrg.height);
         
-    }
-    else{
-        //Call 
+//     }
+//     else{
+//         //Call 
 
-        return;
-    }
-}
+//         return;
+//     }
+// }
 
 //Media queries
-var x = window.matchMedia("(max-width: 600px)");
-console.log(x);
-phoneSize(x);
-x.addListener(phoneSize);
+// var x = window.matchMedia("(max-width: 600px)");
+// console.log(x);
+// phoneSize(x);
+// x.addListener(phoneSize);
 
