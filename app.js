@@ -1,7 +1,6 @@
 //TODO: learn how to animate through colors in canvas
 //Small cup canvas sizing
 
-colors=["#E1BEE7","#F3E5F5","#FCE4EC"];
 
 function drawCup(c, middle, height){
     c.beginPath();
@@ -93,133 +92,189 @@ function drawBoba(c, middle, height){
     animate();
 }
 
-//For width <= 600
-//function phoneSize(x){
-//    if(x.matches){
-        //Setting the dpi stuff up 
-        //----------
-        var scale = window.devicePixelRatio;
+var scale = window.devicePixelRatio;
 
-        var small= document.getElementById('small');
-        small.style.width="80px";
-        small.style.height="120px";
-        small.width = Math.floor(80*scale);
-        small.height = Math.floor(120*scale);
-        var c = small.getContext('2d');
+var small= document.getElementById('small');
+small.style.width="80px";
+small.style.height="120px";
+small.width = Math.floor(80*scale);
+small.height = Math.floor(120*scale);
+var c = small.getContext('2d');
 
-        var med = document.getElementById('medium');
-        med.style.width="120px";
-        med.style.height="160px";
-        med.width=Math.floor(120*scale);
-        med.height=Math.floor(160*scale);
-        var d = med.getContext('2d');
+var med = document.getElementById('medium');
+med.style.width="120px";
+med.style.height="160px";
+med.width=Math.floor(120*scale);
+med.height=Math.floor(160*scale);
+var d = med.getContext('2d');
 
-        var lrg = document.getElementById("large");
-        lrg.style.width="140px";
-        lrg.style.height="180px";
-        lrg.width=Math.floor(140*scale);
-        lrg.height=Math.floor(180*scale);
-        var e = lrg.getContext('2d');
+var lrg = document.getElementById("large");
+lrg.style.width="140px";
+lrg.style.height="180px";
+lrg.width=Math.floor(140*scale);
+lrg.height=Math.floor(180*scale);
+var e = lrg.getContext('2d');
 
-        var elements = [];
-        elements.push(c);
-        elements.push(d);
-        elements.push(e);
-        //----------
+var elements = [];
+elements.push(c);
+elements.push(d);
+elements.push(e);
+//----------
 
-        //Drawing the cups
+//Drawing the cups
 
-        //----------
+//----------
 
-        var duration=2.5;
+var duration=2.5;
 
-        // starting and ending colors
-        var rgbStart='#E1BEE7';
-        var rgbEnd='#FFAB91';
+// starting and ending colors
+var rgbStart='#E1BEE7';
+var rgbEnd='#FFAB91';
 
-        // calculate the # of frames that requestAnimationFrame can draw
-        var opacitySteps=parseInt(60*duration);
+let colors = ['#A5D6A7', '#FFAB91', '#CE93D8'];
 
-        // set the current opacity step at its starting number 
-        var opacityStep=0;
+rgbStart = colors[0];
+rgbEnd = colors[1];
 
-        requestAnimationFrame(animate);
+var colorIdx = 0;
+var next = colorIdx+1;
+var switchDir = false;
 
-        function animate(){ //Commented out time
-            // calculate the current opacity as a percentage
-            var opacity=100*(opacityStep/opacitySteps);
-            if(opacityStep>=opacitySteps-1){ opacity=100; }
+// calculate the # of frames that requestAnimationFrame can draw
+var opacitySteps=parseInt(60*duration);
+
+// set the current opacity step at its starting number 
+var opacityStep=0;
+
+requestAnimationFrame(animate);
+
+
+function animate(){ //Commented out time
+    // calculate the current opacity as a percentage
+
+    var opacity=100*(opacityStep/opacitySteps);
+    if(opacityStep>=opacitySteps-1){ opacity=100; }
+
+    // clear the canvas
+    c.clearRect(0,0,small.width,small.height);
+    d.clearRect(0,0,med.width,med.height);
+    e.clearRect(0,0,lrg.width, lrg.height);
+
+    // draw with the starting color using a lessening opacity
+    for(let i = 0; i<elements.length; i++){
+        elements[i].globalAlpha=(100-opacity)/100;
+    }
+
+    drawStraw(c,small.width/2, small.height);
+    drawStraw(d,med.width/2, med.height);
+    drawStraw(e,lrg.width/2, lrg.height);
+    drawCup(c,small.width/2, small.height);
+    drawCup(d, med.width/2, med.height);
+    drawCup(e, lrg.width/2, lrg.height);
+
+    for(let i = 0; i<elements.length; i++){
+        elements[i].fillStyle=rgbStart;
+        elements[i].fill();
+    }
+    
+    // draw with the ending color using an increasing opacity
+    for(let i = 0; i<elements.length; i++){
+        elements[i].globalAlpha=(opacity)/100;
+    }
+
+    drawStraw(c,small.width/2, small.height);
+    drawStraw(d,med.width/2, med.height);
+    drawStraw(e,lrg.width/2, lrg.height);
+    drawCup(c,small.width/2, small.height);
+    drawCup(d, med.width/2, med.height);
+    drawCup(e, lrg.width/2, lrg.height);
+
+    for(let i = 0; i<elements.length; i++){
+        elements[i].fillStyle=rgbEnd;
+        elements[i].fill();
+    }
+    
+    // clean up, reset globalAlpha to default of 1.00
+    for(let i = 0; i<elements.length; i++){
+        elements[i].globalAlpha=1.00;
+    }
+    
+    
+    // return if all steps have been played
+    if(++opacityStep>=opacitySteps){
+        opacitySteps=parseInt(60*duration);
+        opacityStep=0;
         
-            // clear the canvas
-            c.clearRect(0,0,small.width,small.height);
-            d.clearRect(0,0,med.width,med.height);
-            e.clearRect(0,0,lrg.width, lrg.height);
-        
-            // draw with the starting color using a lessening opacity
-            for(let i = 0; i<elements.length; i++){
-                elements[i].globalAlpha=(100-opacity)/100;
-            }
-
-            drawStraw(c,small.width/2, small.height);
-            drawStraw(d,med.width/2, med.height);
-            drawStraw(e,lrg.width/2, lrg.height);
-            drawCup(c,small.width/2, small.height);
-            drawCup(d, med.width/2, med.height);
-            drawCup(e, lrg.width/2, lrg.height);
-
-            for(let i = 0; i<elements.length; i++){
-                elements[i].fillStyle=rgbStart;
-                elements[i].fill();
-            }
-          
-            // draw with the ending color using an increasing opacity
-            for(let i = 0; i<elements.length; i++){
-                elements[i].globalAlpha=(opacity)/100;
-            }
-
-            drawStraw(c,small.width/2, small.height);
-            drawStraw(d,med.width/2, med.height);
-            drawStraw(e,lrg.width/2, lrg.height);
-            drawCup(c,small.width/2, small.height);
-            drawCup(d, med.width/2, med.height);
-            drawCup(e, lrg.width/2, lrg.height);
-
-            for(let i = 0; i<elements.length; i++){
-                elements[i].fillStyle=rgbEnd;
-                elements[i].fill();
-            }
-            
-            // clean up, reset globalAlpha to default of 1.00
-            for(let i = 0; i<elements.length; i++){
-                elements[i].globalAlpha=1.00;
-            }
-            
-            
-            // return if all steps have been played
-            if(++opacityStep>=opacitySteps){
-                opacitySteps=parseInt(60*duration);
-                opacityStep=0;
-            }
-            
-            // otherwise request another frame
-            requestAnimationFrame(animate);
+        colorIdx++;
+        next = colorIdx+1;
+    
+        if(colorIdx==colors.length){
+            colorIdx = 0;
+            next = colorIdx+1;
         }
-        // bobas
-        drawBoba(c, small.width/2, small.height);
-        drawBoba(d,med.width/2, med.height);
-        drawBoba(e, lrg.width/2, lrg.height);
+
+        if(colorIdx == colors.length-1){
+            next = 0;
+        }
+        rgbStart = colors[colorIdx];
+        rgbEnd = colors[next];
+
+        // if(switchDir==false){
+        //     colorIdx++;
+        // }
+        // else if(switchDir ==true){
+        //     colorIdx-=1;
+        // }
+        // if(switchDir ==false && colorIdx>=colors.length-1){
+        //     switchDir = true;
+        // }
+        // else if(switchDir == true && colorIdx == 0){
+        //     switchDir = false;
+        // }
+        // if(switchDir == false){
+        //     rgbStart = colors[colorIdx];
+        //     rgbEnd = colors[colorIdx+1];
+        // }
+        // else if(switchDir==true){
+        //     rgbStart = colors[colorIdx];
+        //     rgbEnd = colors[colorIdx-1];
+        // }
+
+        console.log(colorIdx);
+        // console.log(switchDir);
         
-//     }
-//     else{
-//         //Call 
+        
+        
+ 
+    }
 
-//         return;
-//     }
-// }
+    
+    
+    // otherwise request another frame
+    requestAnimationFrame(animate);
+}
+// bobas
+drawBoba(c, small.width/2, small.height);
+drawBoba(d,med.width/2, med.height);
+drawBoba(e, lrg.width/2, lrg.height);
 
-//Media queries
-// var x = window.matchMedia("(max-width: 600px)");
-// console.log(x);
-// phoneSize(x);
-// x.addListener(phoneSize);
+
+//Just have the site remember whatever size is clicked when opening the next page
+document.getElementById("small-div").onclick = function(){
+    localStorage.option1 = "small";
+    //document.body.style.backgroundColor="black";
+    location.href="flavor.html"
+}
+
+document.getElementById("med-div").onclick = function(){
+    localStorage.option1 = "medium";
+    //document.body.style.backgroundColor="black";
+    location.href="flavor.html"
+}
+
+document.getElementById("lrg-div").onclick = function(){
+    localStorage.option1 = "large";
+    //document.body.style.backgroundColor="black";
+    location.href="flavor.html"
+}
 
