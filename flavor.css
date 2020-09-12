@@ -8,5 +8,29 @@ body{
     #pick-msg{
         font-family: 'Chilanka', cursive;
     }
+    canvas{
+        border: 1px solid black;
+    }
+    #flavors{
+        width: 200px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 10px;
+    }
+    .tea-div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #screen{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    #cup{
+        margin-top: 100px;
+    }
 
 }

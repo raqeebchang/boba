@@ -131,7 +131,7 @@ var duration=2.5;
 var rgbStart='#E1BEE7';
 var rgbEnd='#FFAB91';
 
-let colors = ['#A5D6A7', '#FFAB91', '#CE93D8'];
+let colors = ['#F6DDCC', '#C39BD3', '#EB984E', '#A9DFBF', '#FAD7A0', '#F5B7B1'];
 
 rgbStart = colors[0];
 rgbEnd = colors[1];

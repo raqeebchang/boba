@@ -9,18 +9,39 @@
     </head>
     <body>
         <h1 id ="pick-msg">Pick a Flavor:</h1>
-        <div id="flavors">
-            <!-- canvas w/several circles w/different color of flavors, 
-                that then fills the cup with that color.
-                There will then be a separate submit button so that ppl
-                can see what the color will look like.
-            -->
-            <canvas id="milk-tea" width="" height=""></canvas>
-            <canvas id="taro-milk-tea" width="" height=""></canvas>
-            <canvas id="thai-tea" width="" height=""></canvas>
-            <canvas id="matcha-latte" width="" height=""></canvas>
-            <canvas id="lychee-green-tea" width="" height=""></canvas>
-            <canvas id="strawberry-latte" width="" height=""></canvas>
+        <div id="screen">
+            <div id="flavors">
+                <!-- canvas w/several circles w/different color of flavors, 
+                    that then fills the cup with that color.
+                    There will then be a separate submit button so that ppl
+                    can see what the color will look like.
+                -->
+                <div id = "milk-tea-div" class="tea-div">
+                    milk tea
+                    <canvas id="milk-tea" width="" height=""></canvas>
+                </div>
+                <div id = "taro-milk-tea-div" class="tea-div">
+                    taro milk tea
+                    <canvas id="taro-milk-tea" width="" height=""></canvas>
+                </div>
+                <div id="thai-tea-div" class="tea-div">
+                    thai tea
+                    <canvas id="thai-tea" width="" height=""></canvas>
+                </div>
+                <div id = "matcha-latte-div" class="tea-div">
+                    matcha latte
+                    <canvas id="matcha-latte" width="" height=""></canvas>
+                </div>
+                <div id = "lychee-green-tea-div" class="tea-div">
+                    lychee green tea
+                    <canvas id="lychee-green-tea" width="" height=""></canvas>
+                </div>
+                <div id="strawberry-latte-div" class="tea-div">
+                    straweberry latte
+                    <canvas id="strawberry-latte" width="" height=""></canvas>
+                </div>
+            </div>
+        <canvas id="cup" width="" height=""></canvas>
         </div>
 
         <script src="flavor.js"></script>
