@@ -16,32 +16,36 @@
                     There will then be a separate submit button so that ppl
                     can see what the color will look like.
                 -->
-                <div id = "milk-tea-div" class="tea-div">
+                <div id = "milk-tea-div" class="tea-div" onClick="coloring(0)">
                     milk tea
                     <canvas id="milk-tea" width="" height=""></canvas>
                 </div>
-                <div id = "taro-milk-tea-div" class="tea-div">
+                <div id = "taro-milk-tea-div" class="tea-div" onClick="coloring(1)">
                     taro milk tea
                     <canvas id="taro-milk-tea" width="" height=""></canvas>
                 </div>
-                <div id="thai-tea-div" class="tea-div">
+                <div id="thai-tea-div" class="tea-div" onClick="coloring(2)">
                     thai tea
                     <canvas id="thai-tea" width="" height=""></canvas>
                 </div>
-                <div id = "matcha-latte-div" class="tea-div">
+                <div id = "matcha-latte-div" class="tea-div" onClick="coloring(3)">
                     matcha latte
                     <canvas id="matcha-latte" width="" height=""></canvas>
                 </div>
-                <div id = "lychee-green-tea-div" class="tea-div">
+                <div id = "lychee-green-tea-div" class="tea-div" onClick="coloring(4)">
                     lychee green tea
                     <canvas id="lychee-green-tea" width="" height=""></canvas>
                 </div>
-                <div id="strawberry-latte-div" class="tea-div">
-                    straweberry latte
+                <div id="strawberry-latte-div" class="tea-div" onClick="coloring(5)">
+                    strawberry latte
                     <canvas id="strawberry-latte" width="" height=""></canvas>
                 </div>
             </div>
-        <canvas id="cup" width="" height=""></canvas>
+            <div id="order-submit">
+                <canvas id="cup" width="" height=""></canvas>
+                <input type="submit" id="sub-butt" onClick="submission()">
+            </div>
+            
         </div>
 
         <script src="flavor.js"></script>
