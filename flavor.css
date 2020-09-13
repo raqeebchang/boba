@@ -4,12 +4,14 @@ body{
     margin: 0;
 }
 
-@media only screen and (max-width: 600px){
-    #pick-msg{
-        font-family: 'Chilanka', cursive;
-    }
-    canvas{
+#pick-msg{
+    font-family: 'Chilanka', cursive;
+}
 
+@media only screen and (max-width: 600px){
+
+    .options{
+        margin-bottom: 15px;
     }
     #flavors{
         width: 200px;
@@ -18,17 +20,20 @@ body{
         flex-direction: column;
         justify-content: space-evenly;
         margin-left: 10px;
+        margin-top: 20px;
     }
     .tea-div{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        
     }
     #screen{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
+        font-family: 'Chilanka', cursive;
     }
     #cup{
         margin-top: 100px;
@@ -45,7 +50,43 @@ body{
     #sub-butt{
         margin-top: 20px;
         width: 60px;
+        font-family: 'Chilanka', cursive;
     }
-    
+}
 
+@media only screen and (min-width: 600px){
+    #pick-msg{
+        margin-top: 40px;
+        font-family: 'Chilanka', cursive;
+    }
+   #screen{
+       display: flex;
+       flex-direction: column-reverse;
+       font-family: 'Chilanka', cursive;
+   }
+
+   #order-submit{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-bottom: 40px;
+   }
+
+   .tea-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sub-butt{
+        margin-top: 20px;
+        width: 60px;
+        font-family: 'Chilanka', cursive;
+    }
+
+   #flavors{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-evenly;
+   }
 }
