@@ -34,6 +34,7 @@ body{
         justify-content: space-between;
         align-items: flex-start;
         font-family: 'Chilanka', cursive;
+        margin-top: -20px;
     }
     #cup{
         margin-top: 100px;
@@ -58,6 +59,7 @@ body{
     #pick-msg{
         margin-top: 40px;
         font-family: 'Chilanka', cursive;
+        
     }
    #screen{
        display: flex;
