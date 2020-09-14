@@ -133,6 +133,7 @@ function submission(){
     else if(flavor == 5){
         localStorage.option2 = "strawberry latte";
     }
+    location.href="toppings.html";
     console.log(localStorage.option2);
 
 }
