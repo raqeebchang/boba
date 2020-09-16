@@ -9,6 +9,9 @@ body{
 }
 
 @media only screen and (max-width: 600px){
+    #pick-msg{
+        margin-top: 5px;
+    }
 
     .options{
         margin-bottom: 15px;
