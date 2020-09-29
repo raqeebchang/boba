@@ -1,3 +1,3 @@
 # boba
-Currently only a home page is active.
+No home page active.
 https://raqeebchang.github.io/boba/
