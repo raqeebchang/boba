@@ -1,3 +1,6 @@
+//TODO: store the flavor color from flavor.js in localstorage and use 
+//that to color the background of the "topping" circles
+
 
 var scale = window.devicePixelRatio;
 
@@ -34,6 +37,11 @@ function drawStraw(c, middle, height){
     c.fillStyle="white";
     c.fill();
     c.stroke();
+}
+
+function fillCup(c,color){
+    c.fillStyle=color;
+    c.fill();
 }
 
 var boba = document.getElementById("boba");
@@ -77,3 +85,34 @@ cup.height = Math.floor(160*scale);
 var c = cup.getContext('2d');
 drawStraw(c, cup.width/2, cup.height);
 drawCup(c, cup.width/2, cup.height);
+
+console.log(localStorage.option2);
+
+let colors = ['#F6DDCC', '#C39BD3', '#EB984E', '#A9DFBF', '#FAD7A0', '#F5B7B1'];
+
+let fillColor = "";
+
+if(localStorage.option2=="milk tea"){
+    fillColor = colors[0];
+}
+else if(localStorage.option2=="taro milk tea"){
+    fillColor = colors[1];
+}
+else if(localStorage.option2=="thai tea"){
+    fillColor = colors[2];
+}
+else if(localStorage.option2=="matcha latte"){
+    fillColor = colors[3];
+}
+else if(localStorage.option2=="lychee green tea"){
+    fillColor = colors[4];
+}
+else if(localStorage.option2=="strawberry latte"){
+    fillColor = colors[5];
+}
+
+fillCup(c, fillColor);
+
+
+
+

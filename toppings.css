@@ -13,21 +13,53 @@ canvas{
 }
 
 @media only screen and (max-width: 600px){
+    #top-msg{
+        margin-top: 5px;
+    }
     #screen{
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
     }
     #toppings{
-        display: flex; 
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 160px;
+        display: grid;
+        grid-template-columns: 90px 90px;
+        grid-template-rows: 100px 100px;
+    }
+    #boba-div{
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    #grass-jelly-div{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    #lychee-jelly-div{
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    #pudding-div{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
     }
     #order-submit{
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 15px;
+    }
+    #sub-butt{
+        margin-top: 10px;
+        width: 60px;
+        font-family: 'Chilanka', cursive;
     }
     .top-div{
         display: flex;
