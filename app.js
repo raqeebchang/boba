@@ -31,7 +31,6 @@ function drawStraw(c, middle, height){
 }
 
 function drawBoba(c, middle, height){
-    // TODO: animate bobas horizontally
     c.lineWidth=1;
     let width=middle*.75;
     let fullWidth = (middle-width)+(middle+width);
@@ -66,8 +65,6 @@ function drawBoba(c, middle, height){
     let x = middle-width+15;
     
     var radius = middle/15;
-    var y = height-radius*2;
-    var bubble = new Bubble(x,y, 3, 3, 15);
     var bubbleArr = [];
 
     for(var i = 1; i<=3; i++){
@@ -76,18 +73,15 @@ function drawBoba(c, middle, height){
             var b = height-30;
             var v1 = (Math.random()-0.5)*2;
             var v2 = (Math.random()-0.5)*2;
-            var r = 15;
             bubbleArr.push(new Bubble(a,b,v1,v2,radius));
         } 
     }
 
-    //console.log(bubbleArr);
     function animate(){
         requestAnimationFrame(animate);
         for(var i = 0; i<bubbleArr.length; i++){
             bubbleArr[i].update();
         }
-
     }
     animate();
 }
@@ -193,13 +187,12 @@ function animate(){ //Commented out time
         elements[i].fillStyle=rgbEnd;
         elements[i].fill();
     }
-    
+ 
     // clean up, reset globalAlpha to default of 1.00
     for(let i = 0; i<elements.length; i++){
         elements[i].globalAlpha=1.00;
     }
-    
-    
+       
     // return if all steps have been played
     if(++opacityStep>=opacitySteps){
         opacitySteps=parseInt(60*duration);
@@ -218,38 +211,7 @@ function animate(){ //Commented out time
         }
         rgbStart = colors[colorIdx];
         rgbEnd = colors[next];
-
-        // if(switchDir==false){
-        //     colorIdx++;
-        // }
-        // else if(switchDir ==true){
-        //     colorIdx-=1;
-        // }
-        // if(switchDir ==false && colorIdx>=colors.length-1){
-        //     switchDir = true;
-        // }
-        // else if(switchDir == true && colorIdx == 0){
-        //     switchDir = false;
-        // }
-        // if(switchDir == false){
-        //     rgbStart = colors[colorIdx];
-        //     rgbEnd = colors[colorIdx+1];
-        // }
-        // else if(switchDir==true){
-        //     rgbStart = colors[colorIdx];
-        //     rgbEnd = colors[colorIdx-1];
-        // }
-
-        console.log(colorIdx);
-        // console.log(switchDir);
-        
-        
-        
- 
     }
-
-    
-    
     // otherwise request another frame
     requestAnimationFrame(animate);
 }

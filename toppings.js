@@ -6,7 +6,7 @@ var scale = window.devicePixelRatio;
 
 function drawCircle(canv, height, color){
     canv.arc(height/2, height/2, height/2-10, 0, Math.PI*2, false);
-    canv.fillStyle = color;
+    canv.fillStyle=color;
     canv.fill();
     canv.stroke();
 }
@@ -44,6 +44,63 @@ function fillCup(c,color){
     c.fill();
 }
 
+function drawBoba(c, middle, height){
+    c.lineWidth=1;
+    let width=middle*.75;
+    let fullWidth = (middle-width)+(middle+width);
+
+    function Bubble (x,y,dx,dy, radius){
+        this.x = x;
+        this.y = y;
+        this.dy = dy;
+        this.dx = dx;
+        this.radius = radius;
+
+        this.draw = function(){
+            c.beginPath();
+                c.arc(this.x, this.y, this.radius,0,Math.PI*2, false);
+                c.stroke();
+                c.fillStyle="black";
+                c.fill();
+        };
+
+        this.update = function(){
+            if(this.x>=middle+width-this.radius||this.x<middle-width+this.radius){
+                    this.dx= -this.dx;
+            }
+            this.x+=this.dx;
+            if(this.y+this.radius >= height-10 || this.y-this.radius < height-(height/5)){
+                this.dy = -this.dy;
+            }
+            this.y+=this.dy;
+            this.draw();
+        };
+    }
+    let x = middle-width+15;
+    
+    var radius = middle/15;
+    var bubbleArr = [];
+
+    for(var i = 1; i<=3; i++){
+        for(var j = 1; j<=10; j++){
+            var a = middle;
+            var b = height-30;
+            var v1 = (Math.random()-0.5)*2;
+            var v2 = (Math.random()-0.5)*2;
+            bubbleArr.push(new Bubble(a,b,v1,v2,radius));
+        } 
+    }
+
+    function animate(){
+        requestAnimationFrame(animate);
+    
+        for(var i = 0; i<bubbleArr.length; i++){
+            bubbleArr[i].update();
+        }
+    }
+    animate();
+}
+
 var boba = document.getElementById("boba");
 boba.style.width="75px";
 boba.style.height="75px";
@@ -51,6 +108,15 @@ boba.width = Math.floor(75*scale);
 boba.height = Math.floor(75*scale);
 var bb = boba.getContext('2d');
 drawCircle(bb, boba.height, "white");
+for(let i = 0; i<3; i++){
+    for(let k = 0; k<3; k++){
+        bb.beginPath();
+        bb.arc((boba.width/2-30)+i*30, (boba.height/2-30)+k*30, 15, 0 , Math.PI*2, false);
+        bb.fillStyle="black";
+        bb.fill();
+    }
+}
+
 
 var grassJelly = document.getElementById("grass-jelly");
 grassJelly.style.width="75px";
@@ -83,10 +149,7 @@ cup.style.height="160px";
 cup.width = Math.floor(120*scale);
 cup.height = Math.floor(160*scale);
 var c = cup.getContext('2d');
-drawStraw(c, cup.width/2, cup.height);
-drawCup(c, cup.width/2, cup.height);
 
-console.log(localStorage.option2);
 
 let colors = ['#F6DDCC', '#C39BD3', '#EB984E', '#A9DFBF', '#FAD7A0', '#F5B7B1'];
 
@@ -111,7 +174,30 @@ else if(localStorage.option2=="strawberry latte"){
     fillColor = colors[5];
 }
 
-fillCup(c, fillColor);
+
+
+requestAnimationFrame(animate);
+
+
+
+function animate(){
+    c.clearRect(0, 0, cup.width, cup.height);
+    drawStraw(c, cup.width/2, cup.height);
+    drawCup(c, cup.width/2, cup.height);
+    fillCup(c, fillColor);
+    requestAnimationFrame(animate);
+}
+
+function helperDrawBoba(){
+    drawBoba(c, cup.width/2, cup.height);
+}
+
+
+
+
+console.log(localStorage.option2);
+
+
 
 
 
