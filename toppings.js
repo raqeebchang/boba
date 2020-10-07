@@ -62,6 +62,7 @@ function drawBoba(c, middle, height){
                 c.stroke();
                 c.fillStyle="black";
                 c.fill();
+
         };
 
         this.update = function(){
@@ -81,7 +82,7 @@ function drawBoba(c, middle, height){
     var radius = middle/15;
     var bubbleArr = [];
 
-    for(var i = 1; i<=3; i++){
+    for(var i = 1; i<=5; i++){
         for(var j = 1; j<=10; j++){
             var a = middle;
             var b = height-30;
@@ -93,13 +94,87 @@ function drawBoba(c, middle, height){
 
     function animate(){
         requestAnimationFrame(animate);
+        c.clearRect(0, 0, cup.width, cup.height);
+        drawStraw(c, cup.width/2, cup.height);
+        drawCup(c, cup.width/2, cup.height);
+        fillCup(c, fillColor);
     
         for(var i = 0; i<bubbleArr.length; i++){
             bubbleArr[i].update();
         }
-    }
+    }   
     animate();
 }
+
+function drawGrassJelly(c, middle, height){
+    c.lineWidth=1;
+    let width=middle*.75;
+    let fullWidth = (middle-width)+(middle+width);
+
+    function Square (x,y,dx,dy){
+        this.x = x;
+        this.y = y;
+        this.dy = dy;
+        this.dx = dx;
+
+        this.draw = function(){
+            c.beginPath();
+            c.moveTo(this.x-15, this.y);
+            c.lineTo(this.x+15, this.y);
+            c.lineTo(this.x+15, this.y-15);
+            c.lineTo(this.x-15, this.y-15);
+            c.closePath();
+            c.stroke();
+            c.fillStyle="black";
+            c.fill();
+        };
+
+        this.update = function(){
+            if(this.x>=middle+width-15||this.x<middle-width+15){
+                    this.dx= -this.dx;
+            }
+            this.x+=this.dx;
+            if(this.y >= height-10 || this.y-7.5 < height-(height/5)){
+                this.dy = -this.dy;
+            }
+            this.y+=this.dy;
+            this.draw();
+        };
+    }
+    let x = middle-width+15;
+    var squareArr = [];
+
+    for(var i = 1; i<=3; i++){
+        for(var j = 1; j<=8; j++){
+            var a = middle;
+            var b = height-30;
+            var v1 = (Math.random()-0.5)*2;
+            var v2 = (Math.random()-0.5)*2;
+            squareArr.push(new Square(a,b,v1,v2));
+        } 
+    }
+
+    function animate(){
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, cup.width, cup.height);
+        drawStraw(c, cup.width/2, cup.height);
+        drawCup(c, cup.width/2, cup.height);
+        fillCup(c, fillColor);
+        //requestAnimationFrame(animate);
+        for(var i = 0; i<squareArr.length; i++){
+            squareArr[i].update();
+        }
+    }
+    animate();
+
+    // requestAnimationFrame(animate);
+
+// function animate(){
+
+// }
+}
+
+
 
 var boba = document.getElementById("boba");
 boba.style.width="75px";
@@ -117,7 +192,6 @@ for(let i = 0; i<3; i++){
     }
 }
 
-
 var grassJelly = document.getElementById("grass-jelly");
 grassJelly.style.width="75px";
 grassJelly.style.height="75px";
@@ -125,6 +199,34 @@ grassJelly.width = Math.floor(75*scale);
 grassJelly.height = Math.floor(75*scale);
 var gJ = grassJelly.getContext('2d');
 drawCircle(gJ, grassJelly.height, "white");
+
+for(let i = 0; i<3; i++){
+    for(let k = 0; k<3; k++){
+        gJ.beginPath();
+        // gJ.moveTo((grassJelly.width/2-45)+i*30, grassJelly.height/2-30+k*25);
+        // gJ.lineTo(grassJelly.width/2-15+i*30,grassJelly.height/2-30+k*25);
+        // gJ.lineTo(grassJelly.width/2-15+i*30, grassJelly.height/2-20+k*25);
+        // gJ.lineTo(grassJelly.width/2-45+i*30, grassJelly.height/2-20+k*25);
+        gJ.moveTo(grassJelly.width/2-51, grassJelly.height/2-30);
+        gJ.lineTo(grassJelly.width/2+51, grassJelly.height/2-30);
+        gJ.lineTo(grassJelly.width/2+51, grassJelly.height/2-20);
+        gJ.lineTo(grassJelly.width/2-51, grassJelly.height/2-20);
+        //Since the width of each row is 100, each one can be 35 
+        gJ.closePath();
+        gJ.fillStyle="black";
+        if((k+1)%2!=0){
+            if((i+1)%2!=0){
+                gJ.fill();
+            }
+        }
+        else if((k+1)%2==0){
+            if((i+1)%2==0){
+                gJ.fill();
+            }
+        }
+        
+    }
+}
 
 var lycheeJelly = document.getElementById("lychee-jelly");
 lycheeJelly.style.width="75px";
@@ -174,22 +276,22 @@ else if(localStorage.option2=="strawberry latte"){
     fillColor = colors[5];
 }
 
+drawStraw(c, cup.width/2, cup.height);
+drawCup(c, cup.width/2, cup.height);
+fillCup(c, fillColor);
 
 
-requestAnimationFrame(animate);
-
-
-
-function animate(){
-    c.clearRect(0, 0, cup.width, cup.height);
-    drawStraw(c, cup.width/2, cup.height);
-    drawCup(c, cup.width/2, cup.height);
-    fillCup(c, fillColor);
-    requestAnimationFrame(animate);
-}
 
 function helperDrawBoba(){
+    c.clearRect(0, 0, cup.width, cup.height);
+    c.beginPath();
     drawBoba(c, cup.width/2, cup.height);
+}
+
+function helperDrawGrassJelly(){
+    c.clearRect(0, 0, cup.width, cup.height);
+    c.beginPath();
+    drawGrassJelly(c, cup.width/2, cup.height);
 }
 
 
