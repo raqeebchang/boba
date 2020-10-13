@@ -59,6 +59,7 @@ function drawBoba(c, middle, height){
         this.draw = function(){
             c.beginPath();
                 c.arc(this.x, this.y, this.radius,0,Math.PI*2, false);
+                c.strokeStyle="black";
                 c.stroke();
                 c.fillStyle="black";
                 c.fill();
@@ -124,6 +125,7 @@ function drawGrassJelly(c, middle, height){
             c.lineTo(this.x+15, this.y-15);
             c.lineTo(this.x-15, this.y-15);
             c.closePath();
+            c.strokeStyle="black";
             c.stroke();
             c.fillStyle="black";
             c.fill();
@@ -166,12 +168,69 @@ function drawGrassJelly(c, middle, height){
         }
     }
     animate();
+}
 
-    // requestAnimationFrame(animate);
+function drawLycheeJelly(c, middle, height){
+    c.lineWidth=1;
+    let width=middle*.75;
+    let fullWidth = (middle-width)+(middle+width);
 
-// function animate(){
+    function Square (x,y,dx,dy){
+        this.x = x;
+        this.y = y;
+        this.dy = dy;
+        this.dx = dx;
 
-// }
+        this.draw = function(){
+            c.beginPath();
+            c.moveTo(this.x-15, this.y);
+            c.lineTo(this.x+15, this.y);
+            c.lineTo(this.x+15, this.y-15);
+            c.lineTo(this.x-15, this.y-15);
+            c.closePath();
+            c.fillStyle="#FFFDE7";
+            c.fill();
+            c.strokeStyle="grey";
+            c.stroke();
+        };
+
+        this.update = function(){
+            if(this.x>=middle+width-15||this.x<middle-width+15){
+                    this.dx= -this.dx;
+            }
+            this.x+=this.dx;
+            if(this.y >= height-10 || this.y-7.5 < height-(height/5)){
+                this.dy = -this.dy;
+            }
+            this.y+=this.dy;
+            this.draw();
+        };
+    }
+    let x = middle-width+15;
+    var squareArr = [];
+
+    for(var i = 1; i<=3; i++){
+        for(var j = 1; j<=8; j++){
+            var a = middle;
+            var b = height-30;
+            var v1 = (Math.random()-0.5)*2;
+            var v2 = (Math.random()-0.5)*2;
+            squareArr.push(new Square(a,b,v1,v2));
+        } 
+    }
+
+    function animate(){
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, cup.width, cup.height);
+        drawStraw(c, cup.width/2, cup.height);
+        drawCup(c, cup.width/2, cup.height);
+        fillCup(c, fillColor);
+        //requestAnimationFrame(animate);
+        for(var i = 0; i<squareArr.length; i++){
+            squareArr[i].update();
+        }
+    }
+    animate();
 }
 
 
@@ -203,27 +262,14 @@ drawCircle(gJ, grassJelly.height, "white");
 for(let i = 0; i<3; i++){
     for(let k = 0; k<3; k++){
         gJ.beginPath();
-        // gJ.moveTo((grassJelly.width/2-45)+i*30, grassJelly.height/2-30+k*25);
-        // gJ.lineTo(grassJelly.width/2-15+i*30,grassJelly.height/2-30+k*25);
-        // gJ.lineTo(grassJelly.width/2-15+i*30, grassJelly.height/2-20+k*25);
-        // gJ.lineTo(grassJelly.width/2-45+i*30, grassJelly.height/2-20+k*25);
-        gJ.moveTo(grassJelly.width/2-51, grassJelly.height/2-30);
-        gJ.lineTo(grassJelly.width/2+51, grassJelly.height/2-30);
-        gJ.lineTo(grassJelly.width/2+51, grassJelly.height/2-20);
-        gJ.lineTo(grassJelly.width/2-51, grassJelly.height/2-20);
-        //Since the width of each row is 100, each one can be 35 
+        gJ.moveTo(grassJelly.width/2-51+(i*34), grassJelly.height/2-30+(k*24));
+        gJ.lineTo(grassJelly.width/2-21+(i*34), grassJelly.height/2-30+(k*24));
+        gJ.lineTo(grassJelly.width/2-21+(i*34), grassJelly.height/2-20+(k*24));
+        gJ.lineTo(grassJelly.width/2-51+(i*34), grassJelly.height/2-20+(k*24));
+        //Since the width of each row is 102, each one can be 30, with 4 between 
         gJ.closePath();
         gJ.fillStyle="black";
-        if((k+1)%2!=0){
-            if((i+1)%2!=0){
-                gJ.fill();
-            }
-        }
-        else if((k+1)%2==0){
-            if((i+1)%2==0){
-                gJ.fill();
-            }
-        }
+        gJ.fill();
         
     }
 }
@@ -235,6 +281,21 @@ lycheeJelly.width = Math.floor(75*scale);
 lycheeJelly.height = Math.floor(75*scale);
 var lJ = lycheeJelly.getContext('2d');
 drawCircle(lJ, lycheeJelly.height, "white");
+for(let i = 0; i<3; i++){
+    for(let k = 0; k<3; k++){
+        lJ.beginPath();
+        lJ.moveTo(lycheeJelly.width/2-51+(i*34), lycheeJelly.height/2-30+(k*24));
+        lJ.lineTo(lycheeJelly.width/2-21+(i*34), lycheeJelly.height/2-30+(k*24));
+        lJ.lineTo(lycheeJelly.width/2-21+(i*34), lycheeJelly.height/2-20+(k*24));
+        lJ.lineTo(lycheeJelly.width/2-51+(i*34), lycheeJelly.height/2-20+(k*24));
+        //Since the width of each row is 102, each one can be 30, with 4 between 
+        lJ.closePath();
+        lJ.fillStyle="#FFFDE7";
+        lJ.fill();
+        lJ.stroke();
+        
+    }
+}
 
 var pudding = document.getElementById("pudding");
 pudding.style.width="75px";
@@ -294,6 +355,11 @@ function helperDrawGrassJelly(){
     drawGrassJelly(c, cup.width/2, cup.height);
 }
 
+function helperDrawLycheeJelly(){
+    c.clearRect(0, 0, cup.width, cup.height);
+    c.beginPath();
+    drawLycheeJelly(c, cup.width/2, cup.height);
+}
 
 
 
