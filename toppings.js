@@ -233,6 +233,20 @@ function drawLycheeJelly(c, middle, height){
     animate();
 }
 
+function drawNone(c, middle, height){
+    c.lineWidth=1;
+    let width=middle*.75;
+    let fullWidth = (middle-width)+(middle+width);
+
+    function animate(){
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, cup.width, cup.height);
+        drawStraw(c, cup.width/2, cup.height);
+        drawCup(c, cup.width/2, cup.height);
+        fillCup(c, fillColor);
+    }
+    animate();
+}
 
 
 var boba = document.getElementById("boba");
@@ -341,29 +355,37 @@ drawStraw(c, cup.width/2, cup.height);
 drawCup(c, cup.width/2, cup.height);
 fillCup(c, fillColor);
 
-
-
+let selection = "";
 function helperDrawBoba(){
     c.clearRect(0, 0, cup.width, cup.height);
     c.beginPath();
     drawBoba(c, cup.width/2, cup.height);
+    selection = "boba";
 }
 
 function helperDrawGrassJelly(){
     c.clearRect(0, 0, cup.width, cup.height);
     c.beginPath();
     drawGrassJelly(c, cup.width/2, cup.height);
+    selection = "grass jelly";
 }
 
 function helperDrawLycheeJelly(){
     c.clearRect(0, 0, cup.width, cup.height);
     c.beginPath();
     drawLycheeJelly(c, cup.width/2, cup.height);
+    selection = "lychee jelly";
 }
 
+function helperStop(){
+    drawNone(c, cup.width/2, cup.height);
+    selection = "none";
+}
 
-
-console.log(localStorage.option2);
+function submission(){
+    localStorage.option3 = selection;
+    location.href = "sugar.html";
+}
 
 
 
