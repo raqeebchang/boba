@@ -8,9 +8,7 @@ body{
     font-family: 'Chilanka', cursive;
 }
 
-canvas{
-    
-}
+
 
 @media only screen and (max-width: 600px){
     #top-msg{
@@ -25,6 +23,7 @@ canvas{
         display: grid;
         grid-template-columns: 90px 90px;
         grid-template-rows: 100px 100px;
+        font-family: 'Chilanka', cursive;
     }
     #boba-div{
         grid-column-start: 1;
@@ -58,6 +57,42 @@ canvas{
     }
     #sub-butt{
         margin-top: 10px;
+        width: 60px;
+        font-family: 'Chilanka', cursive;
+    }
+    .top-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 600px){
+    #top-msg{
+        margin-top: 40px;
+    }
+    #screen{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #toppings{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        
+        width: 800px;
+        font-family: 'Chilanka', cursive;
+        font-size: 24px;
+    }
+    #order-submit{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    #sub-butt{
+        margin-top: 20px;
         width: 60px;
         font-family: 'Chilanka', cursive;
     }

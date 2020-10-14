@@ -256,6 +256,7 @@ boba.width = Math.floor(75*scale);
 boba.height = Math.floor(75*scale);
 var bb = boba.getContext('2d');
 drawCircle(bb, boba.height, "white");
+let radius = 15;
 for(let i = 0; i<3; i++){
     for(let k = 0; k<3; k++){
         bb.beginPath();
