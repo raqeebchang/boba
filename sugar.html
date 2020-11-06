@@ -2,16 +2,29 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="">
+        <link rel="stylesheet" type="text/css" href="sugar.css">
         <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
         <title>Sugar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Pick Your Sugar Level</h1>
+        <h1 id="sugar-msg">Pick Your Sugar Level</h1>
+        <div class="slide-ctr">
+            <input type="range" min="0" max="4" value="2" id="slider">
+            <div class = "values">
+                <div class="wrapper" id="wrapper">
+                    <span>0%</span>
+                    <span>25%</span>
+                    <span>50%</span>
+                    <span>75%</span>
+                    <span>100%</span>
+                </div>
+            </div>
+
+        </div>
 
 
-        <h1>Pick Your Ice Level</h1>
+        <h1 id="ice-msg">Pick Your Ice Level</h1>
 
         
         <script src="sugar.js"></script>
