@@ -20,11 +20,32 @@
                     <span>100%</span>
                 </div>
             </div>
+        </div>
+
+        <h1 id="ice-msg">Pick Your Ice Level</h1>
+        <div class = "ice-pick" id ="ice">
+            <label class="container">No Ice
+                <input type="radio" checked="checked" name="radio" id="r1">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Less Ice
+                <input type="radio" name="radio" id="r2">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">Regular Ice
+                <input type="radio" name="radio" id="r3">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">More Ice
+                <input type="radio" name="radio" id="r4">
+                <span class="checkmark"></span>
+              </label>
 
         </div>
 
-
-        <h1 id="ice-msg">Pick Your Ice Level</h1>
+        <div id="order-submit">
+            <input type="submit" id="sub-butt" value ="Next" onClick="submission()" onmouseover="" style="cursor: pointer;">
+        </div>
 
         
         <script src="sugar.js"></script>
