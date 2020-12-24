@@ -28,6 +28,7 @@ function submission(){
 
     console.log(localStorage.option4);
     console.log(localStorage.option5);
+    location.href = "summary.html"
 
 }
 //I can just have these as conditions for the submit, so it uses that state
