@@ -24,6 +24,7 @@ function drawCup(c, middle, height){
     c.lineTo(middle+width, height-10);
     c.closePath();
     c.stroke();
+    fillCup(c,colors[0])
 }
 
 function drawStraw(c, middle, height){
@@ -134,7 +135,7 @@ function submission(){
         localStorage.option2 = "strawberry latte";
     }
     location.href="toppings.html";
-    console.log(localStorage.option2);
+    
 
 }
 

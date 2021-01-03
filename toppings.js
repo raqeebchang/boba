@@ -1,6 +1,6 @@
 //TODO: store the flavor color from flavor.js in localstorage and use 
 //that to color the background of the "topping" circles
-
+console.log(localStorage.option2);
 
 var scale = window.devicePixelRatio;
 
@@ -356,7 +356,7 @@ drawStraw(c, cup.width/2, cup.height);
 drawCup(c, cup.width/2, cup.height);
 fillCup(c, fillColor);
 
-let selection = "";
+let selection = "none";
 function helperDrawBoba(){
     c.clearRect(0, 0, cup.width, cup.height);
     c.beginPath();
