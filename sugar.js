@@ -26,8 +26,6 @@ function submission(){
         localStorage.option5 = "More Ice";
     }
 
-    console.log(localStorage.option4);
-    console.log(localStorage.option5);
     location.href = "summary.html"
 
 }

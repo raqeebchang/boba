@@ -117,22 +117,22 @@ function coloring(x){
 function submission(){
     
     if(flavor == 0){
-        localStorage.option2 = "milk tea";
+        localStorage.option2 = 0;
     }
     else if(flavor == 1){
-        localStorage.option2 = "taro milk tea";
+        localStorage.option2 = 1;
     }
     else if(flavor == 2){
-        localStorage.option2 = "thai tea";
+        localStorage.option2 = 2;
     }
     else if(flavor == 3){
-        localStorage.option2 = "matcha latte";
+        localStorage.option2 = 3;
     }
     else if(flavor == 4){
-        localStorage.option2 = "lychee green tea";
+        localStorage.option2 = 4;
     }
     else if(flavor == 5){
-        localStorage.option2 = "strawberry latte";
+        localStorage.option2 = 5;
     }
     location.href="toppings.html";
     

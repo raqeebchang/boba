@@ -223,19 +223,19 @@ drawBoba(e, lrg.width/2, lrg.height);
 
 //Just have the site remember whatever size is clicked when opening the next page
 document.getElementById("small-div").onclick = function(){
-    localStorage.option1 = "small";
+    localStorage.option1 = "Small";
     //document.body.style.backgroundColor="black";
     location.href="flavor.html"
 }
 
 document.getElementById("med-div").onclick = function(){
-    localStorage.option1 = "medium";
+    localStorage.option1 = "Medium";
     //document.body.style.backgroundColor="black";
     location.href="flavor.html"
 }
 
 document.getElementById("lrg-div").onclick = function(){
-    localStorage.option1 = "large";
+    localStorage.option1 = "Large";
     //document.body.style.backgroundColor="black";
     location.href="flavor.html"
 }

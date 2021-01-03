@@ -1,0 +1,41 @@
+body{
+    font-family: 'Chilanka', cursive;
+    background-color: #E0F7FA;
+    text-align: center;
+    margin: 0;
+}
+
+@media only screen and (max-width: 600px){
+    #order-msg{
+        margin-top: 5px;
+    }
+    #details{
+        width: 80vw;
+        margin: auto;
+        text-align: left;
+        margin-top: 30px;
+        font-size: 30px;
+    }
+    li:not(:last-child) {
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 600px){
+    #order-msg{
+        margin-top: 40px;
+    }
+    #details{
+        width: 30vw;
+        text-align: left;
+        font-size: 30px;
+        margin: auto;
+        margin-top: 30px;
+        
+    }
+    li:not(:last-child) {
+        margin-bottom: 50px;
+    }
+ 
+}
+
